@@ -1,25 +1,34 @@
 #include <stdio.h>
 
 /**
- * main - print numbers from 0 to 99 in two digits
+ * main - prints all combinations of two two-digit numbers
  *
  * Return: 0
  */
 int main(void)
 {
-    int i;
+    int i, j;
 
-    for (i = 0; i <= 99; i++)
+    for (i = 0; i <= 98; i++)
     {
-        putchar((i / 10) + '0');  /* خانة العشرات */
-        putchar((i % 10) + '0');  /* خانة الآحاد */
-        if (i != 99)
+        for (j = i + 1; j <= 99; j++)
         {
-            putchar(',');
+            /* print first number */
+            putchar((i / 10) + '0');
+            putchar((i % 10) + '0');
             putchar(' ');
+
+            /* print second number */
+            putchar((j / 10) + '0');
+            putchar((j % 10) + '0');
+
+            if (!(i == 98 && j == 99)) /* لا نضع فاصلة بعد آخر رقم */
+            {
+                putchar(',');
+                putchar(' ');
+            }
         }
     }
     putchar('\n');
-
     return (0);
 }
