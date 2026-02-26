@@ -8,20 +8,19 @@
  */
 int main(void)
 {
-    unsigned long first = 1, second = 2, next;
-    unsigned long sum = 2; /* Start with the first even Fibonacci number */
+	unsigned long first = 1, second = 2, next;
+	unsigned long sum = 2; /* start with first even number */
 
-    while (1)
-    {
-        next = first + second;
-        if (next > 4000000)
-            break;
-        if (next % 2 == 0)
-            sum += next;
-        first = second;
-        second = next;
-    }
-
-    printf("%lu\n", sum);
-    return (0);
+	while (1)
+	{
+		next = first + second;
+		if (next > 4000000)
+			break;
+		if (next % 2 == 0)
+			sum += next;
+		first = second;
+		second = next;
+	}
+	printf("%lu\n", sum);
+	return (0);
 }
