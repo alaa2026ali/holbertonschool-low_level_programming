@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * print_diagonal - draws a diagonal line
  * @n: number of times to print '\'
@@ -7,19 +8,20 @@
  */
 void print_diagonal(int n)
 {
-int i = 0, j;
+int i, j; 
+
+i = 0;  
 
 while (i < n)  
 {
- = 0;
-while (j < i) 
+j = 0;  
+ while (j < i)  
 {
 _putchar(' ');
 j++;
 }
-
-_putchar('\\');
-_putchar('\n');
+_putchar('\\');  
+_putchar('\n');  
 i++;
 }
 
