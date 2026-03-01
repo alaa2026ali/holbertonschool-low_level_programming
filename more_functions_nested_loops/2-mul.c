@@ -1,4 +1,4 @@
-#include "main.h"  // or wherever the prototype is declared
+#include "main.h"  
 
 /**
  * mul - multiplies two integers
