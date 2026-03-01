@@ -1,4 +1,4 @@
-#include "main.h"
+#include "main.h"  // or wherever the prototype is declared
 
 /**
  * mul - multiplies two integers
@@ -7,8 +7,7 @@
  *
  * Return: product of a and b
  */
-int mul(int a ,int b)
-{ 
-        return(a*b);
-           mul=a*b;
+int mul(int a, int b)
+{
+    return a * b;  
 }
