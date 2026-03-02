@@ -1,28 +1,25 @@
-#include <stdio.h>  /* Required for printf to print numbers and words */
+#include "main.h"
 
 /**
- * main - prints numbers from 1 to 100 with FizzBuzz rules
- *
- * Return: Always 0
+ * print_number - prints a number using _putchar
+ * @n: number to print
  */
-int main(void)
-{
-int i;
-
-for (i = 1; i <= 100; i++)
+ for (i = 1; i <= 100; i++)
 {
 if (i % 15 == 0)
-printf("FizzBuzz");
+print_string("FizzBuzz");
 else if (i % 3 == 0)
-printf("Fizz");
+print_string("Fizz");
+else if (i % 5 == 0)
+print_string("Buzz");
 else
-printf("%d", i);
+print_number(i);
 
 if (i < 100)
-printf(" ");
+_putchar(' ');
 }
 
-printf("\n");
+_putchar('\n');
 
 return (0);
 }
