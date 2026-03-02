@@ -8,7 +8,6 @@ void print_rev(char *s)
 {
     int len = 0;
 
-    // حساب طول السلسلة
     while (*s != '\0')
     {
         len++;
