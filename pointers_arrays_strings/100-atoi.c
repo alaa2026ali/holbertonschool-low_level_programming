@@ -5,7 +5,7 @@
  * _atoi - converts a string to an integer safely
  * @s: pointer to string
  *
- * Return: the integer value of the string, capped at INT_MAX/INT_MIN if overflow
+ * Return: integer value of string, capped at INT_MAX/INT_MIN if overflow
  */
 int _atoi(char *s)
 {
@@ -24,10 +24,16 @@ int _atoi(char *s)
 
 	while (*s >= '0' && *s <= '9')
 	{
-		if (sign == 1 && (num > (INT_MAX - (*s - '0')) / 10))
-			return (INT_MAX);
-		if (sign == -1 && (num > (-(INT_MIN + (*s - '0'))) / 10))
-			return (INT_MIN);
+		if (sign == 1)
+		{
+			if (num > (INT_MAX - (*s - '0')) / 10)
+				return (INT_MAX);
+		}
+		else /* sign == -1 */
+		{
+			if (num > (-(INT_MIN + (*s - '0'))) / 10)
+				return (INT_MIN);
+		}
 
 		num = num * 10 + (*s - '0');
 		s++;
