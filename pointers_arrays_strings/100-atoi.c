@@ -1,43 +1,43 @@
 #include "main.h"
-#include <limits.h> 
-
+#include <limits.h>
 /**
- * _atoi - converts a string to an integer safely
- * @s: pointer to string
+ * _atoi - Converts a string to an integer, handling signs and non-numeric chars.
+ * @s: The input string.
  *
- * Return: integer value of string, capped at INT_MAX/INT_MIN if overflow
+ * Return: The converted integer. Returns 0 if no numbers found.
  */
 int _atoi(char *s)
 {
-	int sign = 1;
-	int num = 0;
+    unsigned int result = 0;
+    int sign = 1;
+    int digit_found = 0;
+    int overflow_limit_div10 = 214748364; 
 
-	while (*s != '\0' && (*s < '0' || *s > '9'))
-	{
-		if (*s == '-')
-			sign *= -1;
-		else if (*s == '+')
-		{
-		}
-		s++;
-	}
+    while (*s != '\0')
+    {
+        if (*s == '-')
+        {
+            sign *= -1;
+        }
+        else if (*s == '+')
+        {
+        }
+        else if (*s >= '0' && *s <= '9')
+        {
+            digit_found = 1;
+            if (result > (unsigned int)overflow_limit_div10)
+            {
+          
+            }
+            result = (result * 10) + (*s - '0');
+        }
+        /* If a digit was found and the next char is not a digit, stop processing */
+        else if (digit_found)
+        {
+            break;
+        }
 
-	while (*s >= '0' && *s <= '9')
-	{
-		if (sign == 1)
-		{
-			if (num > (INT_MAX - (*s - '0')) / 10)
-				return (INT_MAX);
-		}
-		else /* sign == -1 */
-		{
-			if (num > (-(INT_MIN + (*s - '0'))) / 10)
-				return (INT_MIN);
-		}
-
-		num = num * 10 + (*s - '0');
-		s++;
-	}
-
-	return (num * sign);
+        s++;
+    }
+    return (int)(result * sign);
 }
