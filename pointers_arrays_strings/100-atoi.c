@@ -12,7 +12,6 @@ int _atoi(char *s)
 	unsigned int result = 0;
 	int sign = 1;
 	int digit_found = 0;
-	int overflow_limit_div10 = 214748364;
 
 	while (*s != '\0')
 	{
