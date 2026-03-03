@@ -4,17 +4,18 @@
  * print_array - prints n elements of an integer array
  * @a: pointer to the first element
  * @n: number of elements
+ *
+ * Elements are separated by ", " and ends with \n
  */
 void print_array(int *a, int n)
 {
 	int i;
 
-	for (i = 0; i < n - 1; i++)
+	for (i = 0; i < n; i++)
 	{
-		printf("%d, ", a[i]);
+		if (i != 0)      
+			printf(", ");
+		printf("%d", a[i]);
 	}
-
-	if (n > 0)
-
 	printf("\n");
 }
