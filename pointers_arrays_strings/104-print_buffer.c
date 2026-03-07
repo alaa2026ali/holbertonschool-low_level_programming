@@ -3,9 +3,11 @@
 #include <ctype.h>
 
 /**
- * print_buffer - prints a buffer in a formatted way
- * @b: pointer to buffer
- * @size: size of buffer
+ * print_buffer - prints a buffer 10 bytes per line
+ * @b: pointer to the buffer
+ * @size: number of bytes to print
+ *
+ * Return: void
  */
 void print_buffer(char *b, int size)
 {
@@ -13,34 +15,35 @@ void print_buffer(char *b, int size)
 
 	if (size <= 0)
 	{
-		_putchar('\n');
+		printf("\n");
 		return;
 	}
 
 	for (i = 0; i < size; i += 10)
 	{
-		/* print the position */
+		/* print position */
 		printf("%08x: ", i);
 
-		/* print hexadecimal values */
+		/* print hex values */
 		for (j = 0; j < 10; j++)
 		{
 			if (i + j < size)
 				printf("%02x", (unsigned char)b[i + j]);
 			else
 				printf("  ");
+
 			if (j % 2)
-				printf(" ");
+				printf(" "); /* space after every 2 bytes */
 		}
 
 		/* print characters */
-		for (j = 0; j < 10 && (i + j) < size; j++)
+		for (j = 0; j < 10 && i + j < size; j++)
 		{
-			if (isprint(b[i + j]))
-				_putchar(b[i + j]);
+			if (isprint((unsigned char)b[i + j]))
+				printf("%c", b[i + j]);
 			else
-				_putchar('.');
+				printf(".");
 		}
-		_putchar('\n');
+		printf("\n");
 	}
 }
