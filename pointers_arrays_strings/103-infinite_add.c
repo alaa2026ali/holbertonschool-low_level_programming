@@ -4,10 +4,10 @@
  * infinite_add - adds two numbers stored as strings
  * @n1: first number string
  * @n2: second number string
- * @r: buffer to store the result
+ * @r: buffer to store result
  * @size_r: size of buffer
  *
- * Return: pointer to result string or 0 if buffer too small
+ * Return: pointer to result, or 0 if result can't be stored
  */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
@@ -29,23 +29,31 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	while (i >= 0 || j >= 0 || carry)
 	{
 		sum = carry;
+
 		if (i >= 0)
-			sum += n1[i--] - '0';
+			sum += n1[i] - '0';
 		if (j >= 0)
-			sum += n2[j--] - '0';
+			sum += n2[j] - '0';
+
 		if (k >= size_r - 1)
 			return (0);
-		r[k++] = (sum % 10) + '0';
+
+		r[k] = (sum % 10) + '0';
 		carry = sum / 10;
+
+		i--;
+		j--;
+		k++;
 	}
 
 	r[k] = '\0';
 
+	/* reverse the result string */
 	for (i = 0, j = k - 1; i < j; i++, j--)
 	{
-		char temp = r[i];
+		sum = r[i];
 		r[i] = r[j];
-		r[j] = temp;
+		r[j] = sum;
 	}
 
 	return (r);
