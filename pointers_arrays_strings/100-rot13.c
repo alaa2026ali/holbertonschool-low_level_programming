@@ -14,17 +14,17 @@ char *rot13(char *s)
 
 	while (s[i] != '\0') 
 	{
-	j = 0;
-	while (letters[j] != '\0')
-	{
-	if (s[i] == letters[j]) 
-	{
-	s[i] = rot13letters[j];
-	break;
-	}
-	j++;
-	}
-	i++;
+		j = 0;
+		while (letters[j] != '\0') 
+		{
+			if (s[i] == letters[j])
+			{
+				s[i] = rot13letters[j];
+				break;
+			}
+			j++;
+		}
+		i++;
 	}
 	return (s);
 }
