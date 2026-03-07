@@ -42,11 +42,5 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		carry = sum / 10;
 	}
 
-	k++;
-
-	i = 0;
-	while (r[k])
-		r[i++] = r[k++];
-
-	return (r);
+	return (&r[k + 1]);
 }
