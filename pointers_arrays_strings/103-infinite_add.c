@@ -1,60 +1,61 @@
 #include "main.h"
 
 /**
+ * reverse_str - reverses a string in place
+ * @s: string to reverse
+ * @len: length of the string
+ */
+void reverse_str(char *s, int len)
+{
+	int i, j;
+	char tmp;
+
+	for (i = 0, j = len - 1; i < j; i++, j--)
+	{
+		tmp = s[i];
+		s[i] = s[j];
+		s[j] = tmp;
+	}
+}
+
+/**
  * infinite_add - adds two numbers stored as strings
- * @n1: first number string
- * @n2: second number string
- * @r: buffer to store result
- * @size_r: size of buffer
+ * @n1: first number
+ * @n2: second number
+ * @r: buffer to store the result
+ * @size_r: buffer size
  *
- * Return: pointer to result, or 0 if result can't be stored
+ * Return: pointer to result, or 0 if it doesn't fit
  */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int len1 = 0, len2 = 0, i, j, k, sum, carry = 0;
+	int len1 = 0, len2 = 0, k = 0, carry = 0, sum;
+	char *p1 = n1, *p2 = n2;
 
-	while (n1[len1] != '\0')
+	/* find lengths */
+	while (*p1++)
 		len1++;
-
-	while (n2[len2] != '\0')
+	while (*p2++)
 		len2++;
 
-	if (size_r <= (len1 > len2 ? len1 : len2))
-		return (0);
-
-	i = len1 - 1;
-	j = len2 - 1;
-	k = 0;
-
-	while (i >= 0 || j >= 0 || carry)
+	/* add digits from end to start */
+	while (len1 > 0 || len2 > 0 || carry)
 	{
 		sum = carry;
-
-		if (i >= 0)
-			sum += n1[i] - '0';
-		if (j >= 0)
-			sum += n2[j] - '0';
+		if (len1 > 0)
+			sum += n1[--len1] - '0';
+		if (len2 > 0)
+			sum += n2[--len2] - '0';
 
 		if (k >= size_r - 1)
 			return (0);
 
-		r[k] = (sum % 10) + '0';
+		r[k++] = (sum % 10) + '0';
 		carry = sum / 10;
-
-		i--;
-		j--;
-		k++;
 	}
 
 	r[k] = '\0';
-
-	/* reverse the result string */
-	for (i = 0, j = k - 1; i < j; i++, j--)
-	{
-		sum = r[i];
-		r[i] = r[j];
-		r[j] = sum;
-	}
+	reverse_str(r, k);
 
 	return (r);
 }
