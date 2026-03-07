@@ -10,7 +10,7 @@
  */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int i = 0, j = 0, k, carry = 0, sum, len1 = 0, len2 = 0;
+	int i = 0, k, carry = 0, sum, len1 = 0, len2 = 0;
 
 	while (n1[len1])
 		len1++;
