@@ -5,7 +5,8 @@
  * of a prefix substring
  * @s: string to search
  * @accept: string 
- * containing accepted characters
+ * containing accepted 
+ * characters
  *
  * Return: number of bytes 
  * in initial segment of s
