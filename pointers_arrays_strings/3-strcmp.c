@@ -1,12 +1,11 @@
 #include "main.h"
 
 /**
- * _strspn - gets the length of a prefix substring
- * @s: string to search
- * @accept: string containing accepted characters
+ * _strspn - Entry Point 
+ * @s: input
+ * @accept: input
  *
- * Return: number of bytes in initial segment of s
- *         which consist only of bytes from accept
+ * Return: Always 0 (Success)
  */
 unsigned int _strspn(char *s, char *accept)
 {
