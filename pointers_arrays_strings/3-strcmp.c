@@ -5,7 +5,7 @@
  * @s: string to search
  * @accept: string containing accepted characters
  *
- * Return: number of bytes in s
+ * Return: Always 0
  */
 unsigned int _strspn(char *s, char *accept)
 {
