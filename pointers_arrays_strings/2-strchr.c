@@ -16,7 +16,7 @@ char *_strchr(char *s, char c)
 			return (s);
 		s++;
 	}
-	if (*s == c) /* check the null terminator */
+	if (*s == c) 
 		return (s);
 	return (NULL);
 }
