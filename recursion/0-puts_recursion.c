@@ -10,8 +10,7 @@ if (*s == '\0') /* base case: end of string */
 {
 _putchar('\n');
 return;
- 
-
+}
 _putchar(*s);
 _puts_recursion(s + 1);
 }
