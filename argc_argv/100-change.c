@@ -30,8 +30,8 @@ return (0);
 
 for (i = 0; i < 5; i++)
 {
-coins += cents / values[i]; /* number of coins of this type */
-cents %= values[i];         /* remaining cents */
+coins += cents / values[i];
+cents %= values[i];
 }
 
 printf("%d\n", coins);
