@@ -9,10 +9,10 @@
  */
 void init_dog(struct dog *d, char *name, float age, char *owner)
 {
-    if (d != NULL) /* نتأكد أن المؤشر ليس فارغًا */
+    if (d != NULL)
     {
-        d->name = name;   /* نربط اسم الكلب */
-        d->age = age;     /* نربط العمر */
-        d->owner = owner; /* نربط صاحب الكلب */
+        d->name = name;
+        d->age = age;
+        d->owner = owner;
     }
 }
