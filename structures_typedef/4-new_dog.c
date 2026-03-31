@@ -1,13 +1,11 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include "dog.h"
 /**
- * new_dog - creates a new dog (allocates memory)
+ * new_dog - creates a new dog
  * @name: name of the dog
  * @age: age of the dog
  * @owner: owner of the dog
- *
- * Return: pointer to new dog (dog_t *), or NULL if failed
+ * Return: pointer to newly created dog, or NULL if it fails
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
@@ -20,7 +18,7 @@ if (name != NULL)
 {
 for (i = 0; name[i]; i++)
 ;
-d->name = malloc(i + 1); /* +1 for '\0'
+d->name = malloc(i + 1);
 if (d->name == NULL)
 {
 free(d);
