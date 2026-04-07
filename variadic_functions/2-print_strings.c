@@ -1,5 +1,5 @@
-#include <stdio.h>      // For printf
-#include <stdarg.h>     // For variadic functions (va_list, va_start, va_arg, va_end)
+#include <stdio.h>
+#include <stdarg.h>
 
 /**
  * print_strings - prints strings separated by a given separator
@@ -14,29 +14,27 @@
  */
 void print_strings(const char *separator, const unsigned int n, ...)
 {
-    va_list args;        // Declare a variable to handle the variadic arguments
-    unsigned int i;      // Loop counter
-    char *str;           // Pointer to hold each string
+    va_list args;
+    unsigned int i;
+    char *str;
 
-    va_start(args, n);   // Initialize args to retrieve arguments after 'n'
+    va_start(args, n);
 
     // Loop through all the strings
     for (i = 0; i < n; i++)
     {
-        str = va_arg(args, char *);   // Get the next argument (string)
+        str = va_arg(args, char *);
 
-        // Check if the string is NULL
-        if (str == NULL)
+            if (str == NULL)
             printf("(nil)");
         else
-            printf("%s", str);        // Print the string
+            printf("%s", str);
 
-        // Print separator if it's not NULL and not the last element
         if (separator != NULL && i < n - 1)
             printf("%s", separator);
     }
 
-    va_end(args);        // Clean up the variadic arguments
+    va_end(args);
 
-    printf("\n");        // Print a new line at the end
+    printf("\n");
 }
