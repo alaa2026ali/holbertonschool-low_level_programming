@@ -8,14 +8,11 @@
  */
 size_t list_len(const list_t *h)
 {
-	size_t count = 0;
-
-	/* Traverse the list */
-	while (h != NULL)
-	{
-		count++;        /* count current node */
-		h = h->next;   /* move to next node */
-	}
-
-	return (count);
+size_t i = 0;
+while (h != NULL)
+{
+i++;
+h = h->next;
+}
+return (i);
 }
