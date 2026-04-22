@@ -2,6 +2,18 @@
 #include <stdio.h>
 
 /**
+ * print_error - prints error and exits
+ * @code: exit code
+ * @msg: message
+ * @file: file name
+ */
+void print_error(int code, char *msg, char *file)
+{
+	dprintf(STDERR_FILENO, msg, file);
+	exit(code);
+}
+
+/**
  * main - copies content from one file to another
  * @ac: argument count
  * @av: argument vector
@@ -22,38 +34,21 @@ int main(int ac, char **av)
 
 	fd_from = open(av[1], O_RDONLY);
 	if (fd_from == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
-		exit(98);
-	}
+		print_error(98, "Error: Can't read from file %s\n", av[1]);
 
 	fd_to = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (fd_to == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
-		close(fd_from);
-		exit(99);
-	}
+		print_error(99, "Error: Can't write to %s\n", av[2]);
 
 	while ((r = read(fd_from, buffer, 1024)) > 0)
 	{
 		w = write(fd_to, buffer, r);
 		if (w != r)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
-			close(fd_from);
-			close(fd_to);
-			exit(99);
-		}
+			print_error(99, "Error: Can't write to %s\n", av[2]);
 	}
 
 	if (r == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
-		close(fd_from);
-		close(fd_to);
-		exit(98);
-	}
+		print_error(98, "Error: Can't read from file %s\n", av[1]);
 
 	if (close(fd_from) == -1 || close(fd_to) == -1)
 	{
